@@ -66,7 +66,7 @@ $json_quizz = $_GET['json_url'];
 
 for($i=0; $i<10;$i= $i+1){
 
-isset($_GET['reponse'.$i]);
+ isset($_GET['reponse'.$i]);
 $test_reponse = $_GET['reponse'.$i];
 echo $test_reponse;
 
