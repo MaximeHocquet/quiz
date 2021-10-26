@@ -13,7 +13,7 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-   <link href="styles.css" rel="stylesheet">
+   <link rel="stylesheet" href="style1.css" >
 
     </head>
  
@@ -28,10 +28,10 @@
                 <div class="collapse navbar-collapse" id="navbarText1">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item" style="margin-left: 20px;">
-                            <a class="nav-link waves-effect waves-light" style="color: white;" href="correction_html_quizz.php">Profil <span class="sr-only">(current)</span></a>
+                            <a class="nav-link waves-effect waves-light" style="color: white;" href="#">Profil <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item" style="margin-left: 20px;">
-                            <a class="nav-link waves-effect waves-light" style="color: white;" href="test.php">Score</a>
+                            <a class="nav-link waves-effect waves-light" style="color: white;" href="#">Score</a>
                         </li>
                         <li class="nav-item" style="margin-left: 20px;">
                             <a class="nav-link waves-effect waves-light" style="color: white;" href="#">Classement</a>
@@ -53,6 +53,9 @@ border: 6px solid gray; border-radius: 20px; padding-left: 15px; " >
 <h2>Vos réponses</h2>
 
          <?php
+isset($_GET['difficulté']);
+$niveau = $_GET['difficulté'];
+
 
 isset($_GET['json_url']);
 $json_quizz = $_GET['json_url'];
@@ -70,7 +73,7 @@ for($i=0; $i<10;$i= $i+1){
 $test_reponse = $_GET['reponse'.$i];
 echo $test_reponse;
 
-if($test_reponse == $p->débutant[$i]->réponse)
+if($test_reponse == $p->$niveau[$i]->réponse)
 {
   $compteur_score = $compteur_score +1 ;
 }

@@ -59,14 +59,41 @@
         <div class="bg-white rounded shadow-sm" ><img src=""  id='imageBox' alt="toy_story" class="img-fluid card-img-top"  >
 </div>
 
- <div style='color: black;margin-top: 0px; background-color: white; width: 815px; height: 215px; padding-top: 15px; display: block; margin-left: auto;margin-right: auto; border-radius: 0px; padding-left:20px; ' ><div class='test1' ></div>
+ <div style='color: black;margin-top: 0px; background-color: white; width: 815px; height: 215px; padding-top: 15px; display: block; margin-left: auto;margin-right: auto; border-radius: 0px; padding-left:20px; ' >  
+    <form action='test.php'>
+<div id='remplir'></div>
+
+<script type="text/javascript">
+        
+        let searchParams = new URLSearchParams(window.location.search)
+searchParams.has('url_json') 
+let url = searchParams.get('url_json')
+console.log(url);
+var html1 = " ";
+
+
+            html1 += "<input type='hidden' name='url_json' value='" + url + "'/>";
+
+      $("#remplir").append(html1);
+
+</script>
+
+                   <p id='choix_difficulte'>Selectionner un niveau de difficulté</p>
+
+             <div id='niveau_quizz' class='radio' style='margin-top:15px;'>
+
+  <input id='débutant' class='show_input col-xl-6 col-lg-5 col-md-5 mb-4' label='débutant'  name= 'difficulté' type='radio' value='débutant'>
+  <input id='confirmé' class='show_input col-xl-6 col-lg-5 col-md-5 mb-4' label='confirmé'  name= 'difficulté' type='radio' value='confirmé'>
+ <input id='expert' class='show_input col-xl-6 col-lg-5 col-md-5 mb-4' label='expert'  name= 'difficulté' type='radio' value='expert'>
+</div>
+ <input id='validation_button' style=' display:block; margin-left:auto;margin-right:auto; margin-top:11px;' type='submit' value='Valider'>
+ </form>
         </div>
     </div>
  </div>
 </div>
 
 
-  <script type="text/javascript" src="quizzagain3.js"></script>
 
 
 
@@ -102,18 +129,11 @@
             </div>
         </footer>
     </div>
+
+
  <script type="text/javascript">
         
-        let searchParams = new URLSearchParams(window.location.search)
-searchParams.has('url_json') 
-let url = searchParams.get('url_json')
-console.log(url);
-
- let searchParams1 = new URLSearchParams(window.location.search)
-searchParams1.has('difficulté') 
-let difficulté = searchParams.get('difficulté')
-console.log(difficulté);
-
+        
 switch (url) {
   case './OpenquizzDB/star_wars.json':
     let img = './image/star_wars.jpg'
@@ -160,8 +180,6 @@ switch (url) {
   default:
     console.log('Sorry, we are out of' );
 }
-   var a = url;
-   var b = difficulté;
 
       </script>
 </body>

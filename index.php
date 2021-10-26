@@ -27,7 +27,10 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-   <link rel="stylesheet" href="styles.css" >
+   <link rel="stylesheet" href="style1.css" >
+   <link rel="icon" type="image/png" sizes="16x16" href="./image/icone.jpg">
+
+
 
     <title>QUIZZI.IO</title>
 </head>
@@ -40,10 +43,10 @@
                 <div class="collapse navbar-collapse" id="navbarText1">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item" style="margin-left: 20px;">
-                            <a class="nav-link waves-effect waves-light" style="color: white;" href="correction_html_quizz.php">Profil <span class="sr-only">(current)</span></a>
+                            <a class="nav-link waves-effect waves-light" style="color: white;" href="#">Profil <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item" style="margin-left: 20px;">
-                            <a class="nav-link waves-effect waves-light" style="color: white;" href="test.php">Score</a>
+                            <a class="nav-link waves-effect waves-light" style="color: white;" href="#">Score</a>
                         </li>
                         <li class="nav-item" style="margin-left: 20px;">
                             <a class="nav-link waves-effect waves-light" style="color: white;" href="#">Classement</a>
@@ -73,67 +76,105 @@
       </div>
     </div>
     <!-- End -->
-        <p style="font-weight: bold;">THEME DIVERTISSEMENT </p>
+    <div class="dropdown" >
+  <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Choisir un thème
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#divertissement">Divertissement</a>
+    <a class="dropdown-item" href="#culture">Culture</a>
+    <a class="dropdown-item" href="#">Géographie</a>
+    <a class="dropdown-item" href="#">Web</a>
+
+  </div>
+</div>
+        <p style="font-weight: bold; margin-top: 25px;" id='divertissement'>THEME DIVERTISSEMENT </p>
 <P><HR SIZE="4"></P>
-    <div class="row">
+    <div class="row" >
       <!-- Gallery item -->
-    <a style=" text-decoration:none;" href="test.php">
-      <div class="col-xl-3 col-lg-4 col-md-6 mb-4" style="margin-top: 25px; ">
-        <div class="bg-white rounded shadow-sm"><img src="./image/toy_story.png" alt="toy_story" class="img-fluid card-img-top" >
+    <a style=" text-decoration:none;" href="niveau.php?url_json=./OpenquizzDB/toy_story.json">
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-4 testof" style="margin-top: 25px; ">
+        <div class="bg-white rounded shadow-sm"><img src="./image/toy_story.png" alt="toy_story" class="img-fluid card-img-top " >
           <div class="p-4">
-            <h5> <a href="test.php" class="text-dark" style="font-weight: bold;">Toy Story</a></h5>
-            <p class="small text-muted mb-0">Tester vos connissance sur ce monde créer par PIXAR</p>
+            <h5> <a href="niveau.php?url_json=./OpenquizzDB/toy_story.json" class="text-dark" style="font-weight: bold;">Toy Story</a></h5>
+            <p class="small text-muted mb-0">Tester vos connaissance sur ce monde créer par PIXAR</p>
             
           </div>
         </div>
       </div></a>
       <!-- End -->
- <a style=" text-decoration:none;" href="test.php">
-      <div class="col-xl-3 col-lg-4 col-md-6 mb-4" style="margin-top: 25px;">
-        <div class="bg-white rounded shadow-sm"><img src="./image/marvel.jpg" alt="marvel" class="img-fluid card-img-top">
+    <a style=" text-decoration:none;" href="niveau.php?url_json=./OpenquizzDB/pokemon.json">
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-4 testof" style="margin-top: 25px;">
+        <div class="bg-white rounded shadow-sm"><img src="./image/pokemon.jpg" alt="television" class="img-fluid card-img-top">
           <div class="p-4">
-            <h5> <a href="test.php" class="text-dark" style="font-weight: bold;">Marvel</a></h5>
-            <p class="small text-muted mb-0">Tester vos connissance sur ce monde créer par PIXAR</p>
+            <h5> <a href="niveau.php?url_json=./OpenquizzDB/pokemon.json" class="text-dark" style="font-weight: bold;">Pokemon</a></h5>
+            <p class="small text-muted mb-0">Tester vos connaissance sur ce monde créer par PIXAR</p>
             
           </div>
         </div>
       </div></a>
       <!-- Gallery item -->
-       <a style=" text-decoration:none;" href="test.php">
-      <div class="col-xl-3 col-lg-4 col-md-6 mb-4" style="margin-top: 25px;">
-        <div class="bg-white rounded shadow-sm"><img src="./image/manga.jpg" alt="marvel" class="img-fluid card-img-top">
+       <a style=" text-decoration:none;" href="niveau.php?url_json=./OpenquizzDB/tintin.json">
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-4 testof" style="margin-top: 25px;">
+        <div class="bg-white rounded shadow-sm"><img src="./image/tintin.jpg" alt="tintin" class="img-fluid card-img-top">
           <div class="p-4">
-            <h5> <a href="test.php" class="text-dark" style="font-weight: bold;">Manga</a></h5>
-            <p class="small text-muted mb-0">Tester vos connissance sur ce monde créer par PIXAR</p>
+            <h5> <a href="niveau.php?url_json=./OpenquizzDB/tintin.json" class="text-dark" style="font-weight: bold;">Tintin</a></h5>
+            <p class="small text-muted mb-0">Tester vos connaissance sur ce monde créer par PIXAR</p>
             
           </div>
         </div>
       </div></a>
       <!-- Gallery item -->
-       <a style=" text-decoration:none;" href="test.php">
-      <div class="col-xl-3 col-lg-4 col-md-6 mb-4" style="margin-top: 25px;">
-        <div class="bg-white rounded shadow-sm"><img src="./image/star_wars.jpg" alt="marvel" class="img-fluid card-img-top">
+       <a style=" text-decoration:none;" href="niveau.php?url_json=./OpenquizzDB/star_wars.json">
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-4 testof" style="margin-top: 25px;">
+        <div class="bg-white rounded shadow-sm"><img src="./image/star_wars.jpg" alt="star_wars" class="img-fluid card-img-top">
           <div class="p-4">
-            <h5> <a href="test.php" class="text-dark" style="font-weight: bold;">Star Wars</a></h5>
-            <p class="small text-muted mb-0">Tester vos connissance sur ce monde créer par PIXAR</p>
+            <h5> <a href="niveau.php?url_json=./OpenquizzDB/star_wars.json" class="text-dark" style="font-weight: bold;">Star Wars</a></h5>
+            <p class="small text-muted mb-0">Tester vos connaissance sur ce monde créer par PIXAR</p>
             
           </div>
         </div>
       </div></a>
       <!-- Gallery item -->
+  <a style=" text-decoration:none;" href="niveau.php?url_json=./OpenquizzDB/television.json">
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-4 testof" style="margin-top: 25px;">
+        <div class="bg-white rounded shadow-sm"><img src="./image/television.jpg" alt="television" class="img-fluid card-img-top">
+          <div class="p-4">
+          <h5> <a href="niveau.php?url_json=./OpenquizzDB/television.json" class="text-dark" style="font-weight: bold;">Feuilleton Télé</a></h5>
+            <p class="small text-muted mb-0">Tester vos connaissance sur ce monde créer par PIXAR</p>
+            
+          </div>
+        </div>
+      </div></a>
 
+      <!-- New -->
+    
+
+       <a style=" text-decoration:none;" href="niveau.php?url_json=./OpenquizzDB/perso_imaginaire.json">
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-4 testof" style="margin-top: 25px;">
+        <div class="bg-white rounded shadow-sm"><img src="./image/perso_fictif.jpg" alt="marvel" class="img-fluid card-img-top">
+          <div class="p-4">
+            <h5> <a href="niveau.php?url_json=./OpenquizzDB/perso_imaginaire.json" class="text-dark" style="font-weight: bold;">Fictif / Imaginaire</a></h5>
+            <p class="small text-muted mb-0">Tester vos connaissance sur ses différents personnages fictifs</p>
+            
+          </div>
+        </div>
+      </div></a>
+      <!--NEW-->
       
     </div>
-    <p style="margin-top:50px; font-weight: bold;">THEME CULTURE </p>
+    <p style="margin-top:50px; font-weight: bold;" id='culture'>THEME CULTURE </p>
 <P ><HR SIZE="4"></P>
-    <div class="row">
+
+
+    <div class="row" >
       <!-- Gallery item -->
-    <a style=" text-decoration:none;" href="test.php">
-      <div class="col-xl-3 col-lg-4 col-md-6 mb-4" style="margin-top: 25px;">
+    <a style=" text-decoration:none;" href="niveau.php?url_json=./OpenquizzDB/toy_story.json">
+      <div class="col-xl-3 col-lg-4 col-md-6 mb-4 testof" style="margin-top: 25px;">
         <div class="bg-white rounded shadow-sm"><img src="./image/toy_story.png" alt="toy_story" class="img-fluid card-img-top">
           <div class="p-4">
-            <h5> <a href="test.php" class="text-dark" style="font-weight: bold;">Toy Story</a></h5>
-            <p class="small text-muted mb-0">Tester vos connissance sur ce monde créer par PIXAR</p>
+            <h5> <a href="niveau.php?url_json=./OpenquizzDB/toy_story.json" class="text-dark" style="font-weight: bold;">Toy Story</a></h5>
+            <p class="small text-muted mb-0">Tester vos connaissance sur ce monde créer par PIXAR</p>
             
           </div>
         </div>
