@@ -1,3 +1,22 @@
+<?php
+    declare(strict_types=1);
+
+    session_start();
+    require_once 'config.php'; // ajout connexion bdd 
+   // si la session existe pas soit si l'on est pas connecté on redirige
+    if(!isset($_SESSION['user'])){
+        header('Location:index.php');
+        die();
+    }
+
+    // On récupere les données de l'utilisateur
+    $req = $bdd->prepare('SELECT * FROM joueur WHERE token = ?');
+    $req->execute(array($_SESSION['user']));
+    $data = $req->fetch();
+   
+
+
+?>  
 <!DOCTYPE html>
 <html>
   <head>
@@ -31,9 +50,15 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarText1">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item" style="margin-left: 20px;">
-                            <a class="nav-link waves-effect waves-light" style="color: white;" href="#">Profil <span class="sr-only">(current)</span></a>
-                        </li>
+                         <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Profil
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Paramètres</a>
+          <a class="dropdown-item" href="deconnexion.php">Deconnexion</a>
+        </div>
+      </li>
                         <li class="nav-item" style="margin-left: 20px;">
                             <a class="nav-link waves-effect waves-light" style="color: white;" href="#">Score</a>
                         </li>
@@ -48,7 +73,7 @@
                 </div>
             </nav>
      
-    <h1 style='text-align: center; margin-bottom: 0px;'>BIENVENUE SUR NOTRE QUIZZ EN LIGNE</h1>
+    <h1 style='text-align: center; margin-bottom: 0px;'>BIENVENUE <em><?php echo $data['pseudo']; ?></em> SUR NOTRE QUIZZ EN LIGNE</h1>
            <p><i>Une seule réponse par question, faîtes attention car une mauvaise réponse entraînera un point négatif. (pas encore fait)</br>
           </i><p>
   <div class='container'>
@@ -59,7 +84,7 @@
         <div class="bg-white rounded shadow-sm" ><img src=""  id='imageBox' alt="toy_story" class="img-fluid card-img-top"  >
 </div>
 
- <div style='color: black;margin-top: 0px; background-color: white; width: 815px; height: 215px; padding-top: 15px; display: block; margin-left: auto;margin-right: auto; border-radius: 0px; padding-left:20px; ' ><div class='test1' ></div>
+ <div style='color: black;margin-top: 0px; background-color: white; width: 815px; height: 195px; padding-top: 15px; display: block; margin-left: auto;margin-right: auto; border-radius: 0px; padding-left:20px; ' ><div class='test1' ></div>
         </div>
     </div>
  </div>
