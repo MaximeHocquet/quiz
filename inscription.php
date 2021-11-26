@@ -28,12 +28,12 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
    <link rel="stylesheet" href="style1.css" >
-   <link rel="icon" type="image/png" sizes="16x16" href="./image/icone.jpg">
+   <link rel="icon" type="image/png" sizes="16x16" href="./image/logo2.png">
 
 <title>QUIZZI.IO</title>
 </head>
 <body>
-        <nav class="mb-4 navbar navbar-expand-lg navbar-dark bg-danger" >
+        <nav class="mb-4 navbar navbar-expand-lg navbar-dark " style="background-color: #983bd8;">
                 <a class="navbar-brand font-bold" href="index.php" style="color: white; font-weight: bold;">QUIZZI.IO</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText1" aria-controls="navbarText1" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -102,7 +102,17 @@
                             <div class="alert alert-danger">
                                 <strong>Erreur</strong> compte deja existant
                             </div>
+
                         <?php 
+                          break;
+                        case 'mail_send':
+                        ?>
+                            <div class="alert alert-success">
+                                Vous venez de recevoir un <strong>mail de notre part !</strong> Celui-ci contiendra le lien d'activation de votre compte.
+                            </div>
+                            
+                        <?php 
+
 
                     }
                 }
@@ -125,9 +135,17 @@
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block">Inscription</button>
                 </div> 
-                                               <p class="text-center"><a href="connexion.php">Connexion</a></p>
+                                               <p class="text-center"><a href="index.php">Connexion</a></p>
   
             </form>
+
+
+               
+
+
+
+
+
         </div>
         <style>
             .login-form {

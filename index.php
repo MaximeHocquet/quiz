@@ -28,18 +28,20 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
    <link rel="stylesheet" href="style1.css" >
-   <link rel="icon" type="image/png" sizes="16x16" href="./image/icone.jpg">
+   <link rel="icon" type="image/png" sizes="16x16" href="./image/logo2.png">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 <title>QUIZZI.IO</title>
 </head>
 <body>
-        <nav class="mb-4 navbar navbar-expand-lg navbar-dark bg-danger" >
-                <a class="navbar-brand font-bold" href="index.php" style="color: white; font-weight: bold;">QUIZZI.IO</a>
+        <nav class="mb-4 navbar navbar-expand-lg navbar-dark" style="background-color: #983bd8;" >
+        <a class="navbar-brand font-bold" href="index.php" style="color: white; font-weight: bold;"><img style="height: 50px;" src="./image/logo2.png"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText1" aria-controls="navbarText1" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarText1">
-                    
+                      
                     
                    
                 </div>
@@ -48,10 +50,35 @@
     <h1 style='text-align: center; margin-bottom: 0px;'>BIENVENUE SUR NOTRE QUIZZ EN LIGNE</h1>
 
       <section class="Acceuilpage" style="background-color: #E9E9E9;"> 
+<img href='./image/logo2.png'>
+<div class="container" style="margin-top: 35px;">
+  <div class="row">
 
-
-
-<div class="login-form">
+              <div id="carouselExampleIndicators " class="carousel slide" data-ride="carousel" style="width: 400px;display: inline-block; float: left;margin-right: 150px;margin-top: 46px;margin-left: 150px;">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="./image/presentation.png" alt="First slide" style=" border-radius: 10px; box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="./image/presentation2.png" alt="Second slide" style=" border-radius: 10px; box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="./image/presentation.png" alt="Third slide" style=" border-radius: 10px; box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+    </div>
+  </div>
+  
+</div>
+<script type="text/javascript">
+    $('.carousel').carousel({
+  interval: 4500
+})
+</script>
+<div class="login-form" style="float: left;display: inline-block;">
              <?php 
                 if(isset($_GET['login_err']))
                 {
@@ -59,18 +86,10 @@
 
                     switch($err)
                     {
-                        case 'password':
+                         case 'validation_inscription':
                         ?>
-                            <div class="alert alert-danger">
-                                <strong>Erreur</strong> mot de passe incorrect
-                            </div>
-                        <?php
-                        break;
-
-                        case 'email':
-                        ?>
-                            <div class="alert alert-danger">
-                                <strong>Erreur</strong> email incorrect
+                            <div class="alert alert-success">
+                                Votre compte a bien été validé !
                             </div>
                         <?php
                         break;
@@ -78,17 +97,26 @@
                         case 'already':
                         ?>
                             <div class="alert alert-danger">
-                                <strong>Erreur</strong> compte non existant
+                                Email ou Mot de passe incorrect
+                            </div>
+                        <?php
+                        break;
+
+                        case 'inscription_reussi':
+                        ?>
+                            <div class="alert alert-success">
+                                Inscription effectué
                             </div>
                         <?php
                         break;
                     }
                 }
                 ?> 
-            
-            <form action="connexion.php" method="post">
+              
+            <div style=" width: 100%;">
+            <form action="connexion.php" method="post" >
                 <h2 class="text-center">Connexion</h2>       
-                <div class="form-group">
+                <div class="form-group" >
                     <input type="email" name="email" class="form-control" placeholder="Email" required="required" autocomplete="off">
                 </div>
                 <div class="form-group">
@@ -97,12 +125,15 @@
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block">Connexion</button>
                 </div>   
+                            <p class="text-center"><a href="inscription.php" >Inscription</a></p>
+
             </form>
-            <p class="text-center"><a href="inscription.php">Inscription</a></p>
         </div>
+                </div>
+
         <style>
             .login-form {
-                width: 340px;
+                width: 420px;
                 margin: 50px auto;
             }
             .login-form form {

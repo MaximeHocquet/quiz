@@ -1,17 +1,26 @@
 <?php 
-        /*
-           Attention ! le host => l'adresse de la base de données et non du site !!
         
-           Pour ceux qui doivent spécifier le port ex : 
-           $bdd = new PDO("mysql:host=CHANGER_HOST_ICI;dbname=CHANGER_DB_NAME;charset=utf8;port=3306", "CHANGER_LOGIN", "CHANGER_PASS");
-           
-         */
-    try 
+class Database
+{
+    private $bdd;
+
+    public function __construct()
     {
-        $bdd = new PDO("mysql:host=mysql-amine.alwaysdata.net;dbname=amine_quizz;port=3306", "amine", "moamine01");
-   }
-    catch(PDOException $e)
-    {
+      try 
+      {
+        $this->bdd = new PDO("mysql:host=mysql-amine.alwaysdata.net;dbname=amine_quizz;port=3306", "amine", "moamine01");
+     } catch(PDOException $e)
+      {
         die('Erreur : '.$e->getMessage());
+      }
+
+}
+public function getBdd()
+    {
+        return $this->bdd;
     }
 
+
+    
+
+  }

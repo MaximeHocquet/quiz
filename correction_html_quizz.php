@@ -1,109 +1,63 @@
-<?php
-    declare(strict_types=1);
-
-    session_start();
-    require_once 'config.php'; // ajout connexion bdd 
-   // si la session existe pas soit si l'on est pas connecté on redirige
-    if(!isset($_SESSION['user'])){
-        header('Location:index.php');
-        die();
-    }
-
-    // On récupere les données de l'utilisateur
-    $req = $bdd->prepare('SELECT * FROM joueur WHERE token = ?');
-    $req->execute(array($_SESSION['user']));
-    $data = $req->fetch();
-   
+ <?php
+    include "./include/header.inc.php"; 
+?>
 
 
-?>  
-<!DOCTYPE PHP>
-<html>
-    <head> <meta http-equiv="Content-type" content="text/html; charset="utf8" />
-             <link href="style.css" rel="stylesheet">
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-   <link rel="stylesheet" href="style1.css" >
 
-    </head>
- 
-<body>
 
-  
-<nav class="mb-4 navbar navbar-expand-lg navbar-dark bg-danger" >
-                <a class="navbar-brand font-bold" href="index.php" style="color: white; font-weight: bold;">QUIZZI.IO</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText1" aria-controls="navbarText1" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarText1">
-                    <ul class="navbar-nav mr-auto">
-                         <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Profil
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Paramètres</a>
-          <a class="dropdown-item" href="deconnexion.php">Deconnexion</a>
-        </div>
-      </li>
-                        <li class="nav-item" style="margin-left: 20px;">
-                            <a class="nav-link waves-effect waves-light" style="color: white;" href="#">Score</a>
-                        </li>
-                        <li class="nav-item" style="margin-left: 20px;">
-                            <a class="nav-link waves-effect waves-light" style="color: white;" href="#">Classement</a>
-                        </li>
-                    </ul>
-                     <p class="form-inline" style="color: white;">
-                       <img style="height: 50px;" src="./image/logo.png">
-                    </p>
-                   
-                </div>
-            </nav>
-         <h1 style='text-align: center; margin-bottom: 15px;'>BIENVENUE <em><?php echo $data['pseudo']; ?></em> SUR NOTRE QUIZZ EN LIGNE</h1>
-
-     
-  
-
-<div class="resultat_score" style="display: block; margin-left: auto;margin-right:auto; height: 380px; width: 500px; background-color: lightblue;
-border: 6px solid gray; border-radius: 20px; padding-left: 15px; " >
-<h2>Vos réponses</h2>
+<div class="resultat_score" style="background-color:" >
+<h2 style=" color: #983bd8; margin-top: 1cm;">Vos réponses</h2>
 
          <?php
-isset($_GET['difficulté']);
-$niveau = $_GET['difficulté'];
+isset($_POST['difficulté']);
+$niveau = $_POST['difficulté'];
 
+isset($_POST['json_url']);
+$json_quizz = $_POST['json_url'];
 
-isset($_GET['json_url']);
-$json_quizz = $_GET['json_url'];
-
-           $test = file_get_contents($json_quizz);
+        $test = file_get_contents($json_quizz);
 
         $json = json_decode($test);
 
+
+
          $compteur_score = 0; 
           foreach($json->quizz as $p){
+            
+          $test_reponse = '<div class="container">';
+      
+      for($i=0; $i<10;$i= $i+1){
+         if($_POST['reponse'.$i] == $p->$niveau[$i]->réponse){
+          $compteur_score = $compteur_score +1 ;
+                              $bg_color = '#a770ef';
 
-for($i=0; $i<10;$i= $i+1){
+        }else{
+                    $bg_color = '#F12602';
 
- isset($_GET['reponse'.$i]);
-$test_reponse = $_GET['reponse'.$i];
-echo $test_reponse;
-
-if($test_reponse == $p->$niveau[$i]->réponse)
-{
-  $compteur_score = $compteur_score +1 ;
-}
-echo "<br>";
         }
+        
+        if($i % 2==0){
+           $test_reponse.= '<div class="row justify-content-md-center">
+
+           <div class="col-xl-4 col-lg-4 col-md-4 col-sm-8 mb-4" style=" border-radius:6px; background-color:'.$bg_color.'; color:white; 
+           width:15%; margin: 9px auto 9px auto; padding-top:6px;"><p>'.$_POST['reponse'.$i].'</p></div>';
+            
+        }
+        else {
+          $test_reponse.= '<div class="col-xl-4 col-lg-4 col-md-4 col-sm-8 mb-4" style=" border-radius:6px;
+           background-color:'.$bg_color.'; color:white; width:15%; margin: 9px auto 9px auto;padding-top:6px;"><p>'.$_POST['reponse'.$i].'</div></div>';
+        }
+        
+
+      
+
+       
+        }
+        $test_reponse.="</div>\n";
+        echo $test_reponse;
       }
 
 
@@ -114,9 +68,10 @@ echo "<br>";
 
 </div>
 <?php
-       echo "<p style='font-weight:bold;'>Votre score total est de : ". $compteur_score . "/10 </p>";
+       echo "<br><p style=' font-size: 25px;'>Votre score total est de : </p>
+       <p style='font-weight:bold; font-size: 30px; color: #983bd8;'>". $compteur_score . "/10 </p>";
 
 ?>
-
+  
 </body>
 </html>

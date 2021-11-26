@@ -22,11 +22,11 @@ window.onload = function () {
 
             }
           
-                    html += "<form action='correction_html_quizz.php'>";
+                    html += "<form action='correction_html_quizz.php' method='post'>";
 var compteur_input =0;
       $.each(niveau, function (i) {
         html += "<div id='question" + i + "'>";
-        html += niveau[i].question + "q)" +i;
+        html += niveau[i].question;
         html += "</br>";
                 html += "<div class='radio'>";
 
