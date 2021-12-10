@@ -1,83 +1,56 @@
     <?php
     include "./include/header.inc.php"; 
-?>
-   <body>
-           <form method="post" enctype="multipart/form-data">
-            <input type="file" name="photo">
-            <input type="submit">
-        </form>
-    <?php
 
-class avatarProfil
+if(isset($_POST["valider"]))
 {
 
-        public $photo_profil;
-        public $email;
 
- public function __construct($photo_profil, $email)
-    {
-        $this->bdd = new Database();
+    $req = $bdd->prepare("UPDATE joueur SET avatar = :image WHERE  email= :email");
+    $req->execute(array(
+            'image' => file_get_contents($_FILES["image"]["tmp_name"]),
+            'email' => $data['email']
 
-        $this->bdd = $this->bdd->getBdd();
-        $this->photo_profil = $photo_profil;
-        $this->email = $email;
-    }
-    
-
- public function affichage_photo()
-    {
-        // On regarde si l'utilisateur est inscrit dans la table utilisateurs
-      // Si le mot de passe est le bon
-   
-
-        $check = $this->bdd->prepare("SELECT * FROM joueur WHERE token ='".$this->email."'");
-        $check->execute(array($this->email));
-          $data = $check->fetch();
-       
-echo $data['email'];
-
-$update = $this->bdd->prepare("UPDATE joueur SET avatar = '".$this->photo_profil."' WHERE  token ='".$this->email."'");
-            $update->execute(array(
-
-              $this->photo_profil, 
-              $this->email
-
-            ));
-    
-
-   // header('Location:index.php?login_err=validation_inscription');
-        
-                     //echo '<img src="' . $this->photo_profil . '">';
-
-                    // echo $this->email;
-       if(empty($this->photo_profil))
-       {
-        echo "pas de photo";
-       }
-       else{
-       }    
-
-
-
-       
-       
-
+));
 
 }
-}
 
+?> 
+   <body>
+    <div class="container" style="background-color: white; border: 1px solid black; margin-top: 50px; padding-top: 25px; width: 550px; border-radius: 20px; padding-bottom: 25px;">
+    <?php
+          
 
+                 if(empty($data['avatar'])){
+                  echo "<img style='width:150px;'src='./image/logo.png'>";
 
+                 }else{
 
-            echo '<p>La photo a bien été envoyée.</p>';
-            //echo '<img src="' . $_FILES['photo']['name'] . '">';
-            //echo file_get_contents($_FILES['photo']['tmp_name']);
-            $photo= base64_encode(file_get_contents($_FILES['photo']['tmp_name']));
-            $avatarPhoto = new avatarProfil($photo, $data['email']);
-            $avatarPhoto->affichage_photo();
+                   // echo '<img style="width:50px;" src="' . $data['avatar'] . '">';
+                 echo "<img class='rounded-circle' style='width:150px;height:150px;'src='data:image/png;base64,". base64_encode($data['avatar'])."'>";
 
+                  }
 
+             
+                ?>
+                <HR>
 
-    ?>
+           <form name="fo" method="post" enctype="multipart/form-data">
+            <h3 style="font-weight: bold; margin-bottom: 10px;"> Changer d'Avatar</h3>
+            <input type="file" name="image" /><br /><br />
+            <input type="submit" name="valider" value="Charger">
+        </form><HR>
+         <h3 style="font-weight: bold; margin-bottom: 10px;"> Profil</h3>
+         <?php
+            echo"Pseudo : ". $data['pseudo'];
+            echo "<br>";
+            echo"Email : ". $data['email'];
+
+         ?>
+
+ 
+</div>
     
-    </body> 
+     <?php
+            include "./include/footer.inc.php"; 
+        ?>
+     </body></html>

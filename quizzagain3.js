@@ -32,7 +32,7 @@ var compteur_input =0;
 
 
         for (var k = 0; k < 4; k++) {
-          html += "<input class='show_input col-xl-6 col-lg-5 col-md-5 mb-4' label='" +niveau[i].propositions[k] + "'  name= 'reponse" + i + "' type='radio' value='" + niveau[i].propositions[k] +
+          html += "<input required='required' class='show_input col-xl-6 col-lg-5 col-md-5 mb-4' label='" +niveau[i].propositions[k] + "'  name= 'reponse" + i + "' type='radio' value='" + niveau[i].propositions[k] +
             "' id = '" + compteur_input + "'>";
                     compteur_input++;
 
@@ -48,11 +48,9 @@ var compteur_input =0;
       });
 
       html +=
-        "<input id='validation_button' style=' display:block; margin-left:auto;margin-right:auto; margin-top:11px;' type='submit' value='Résultat'>";
-
+        "<input id='validation_button' style=' display:block; margin-left:auto; margin-right:auto; margin-top:11px; border-radius: 6px; background: #444; color:#fff; width: 20%;' type='submit' value='Résultat'>";
       html += "<input type='hidden' name='json_url' value='" + a + "'/>";
       html += "<input type='hidden' name='difficulté' value='" + b + "'/>";
-
 
       html += "</form>";
       $(".test1").append(html);

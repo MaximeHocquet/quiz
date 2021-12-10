@@ -11,10 +11,8 @@
     <meta charset="utf-8"/>
     <meta name="date" content="21/03/2021"/>
     <meta name="author" content="Amine Belhaimeur"/>
-    <meta name="description" content="Projet" />
-    <meta name="keywords" content="td, index"/>
-    <link rel="icon" type="image/png" sizes="16x16" href="images/logosite.png"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -29,8 +27,34 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
    <link rel="stylesheet" href="style1.css" >
    <link rel="icon" type="image/png" sizes="16x16" href="./image/logo2.png">
-
+      <meta name="keywords" content="quizzi, quizzi.io,quizz en ligne, quizz, jeux en ligne, questions, réponses, QUIZZI.IO, QUIZZI" />
+      <meta name="description" content="Quizzi est un site permettant de jouer à de nombreux quizz " />
+      <meta name="google-site-verification" content="jAluI5DmZ1rq6rWMAfMCoKdSBdR5iRHIzcE27X7vKLE" />
 <title>QUIZZI.IO</title>
+
+ <style>
+            .login-form {
+                width: 340px;
+                margin: 50px auto;
+            }
+            .login-form form {
+                margin-bottom: 15px;
+                background: #f7f7f7;
+                box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+                padding: 30px;
+            }
+            .login-form h2 {
+                margin: 0 0 15px;
+            }
+            .form-control, .btn {
+                min-height: 38px;
+                border-radius: 2px;
+            }
+            .btn {         
+                font-size: 15px;
+                font-weight: bold;
+            }
+        </style>
 </head>
 <body>
         <nav class="mb-4 navbar navbar-expand-lg navbar-dark " style="background-color: #983bd8;">
@@ -45,13 +69,13 @@
                 </div>
             </nav>
      
-    <h1 style='text-align: center; margin-bottom: 0px;'>BIENVENUE SUR NOTRE QUIZZ EN LIGNE</h1>
+    <h1 style='text-align: center; margin-bottom: 0px; background-color: #444; color: #fff;'>BIENVENUE SUR NOTRE QUIZZ EN LIGNE</h1>
 
       <section class="Acceuilpage" style="background-color: #E9E9E9;"> 
 
 
 
-        <div class="login-form">
+        <div class="login-form" style="margin-top: 75px;">
             <?php 
                 if(isset($_GET['reg_err']))
                 {
@@ -145,30 +169,10 @@
 
 
 
-
-        </div>
-        <style>
-            .login-form {
-                width: 340px;
-                margin: 50px auto;
-            }
-            .login-form form {
-                margin-bottom: 15px;
-                background: #f7f7f7;
-                box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-                padding: 30px;
-            }
-            .login-form h2 {
-                margin: 0 0 15px;
-            }
-            .form-control, .btn {
-                min-height: 38px;
-                border-radius: 2px;
-            }
-            .btn {        
-                font-size: 15px;
-                font-weight: bold;
-            }
-        </style>
+        </div></section>
+         <?php
+            include "./include/footer.inc.php"; 
+        ?>
+       
         </body>
 </html>
